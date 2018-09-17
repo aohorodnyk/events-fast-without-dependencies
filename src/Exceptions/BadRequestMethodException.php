@@ -9,7 +9,7 @@
 namespace Exceptions;
 
 
-class BadRequestMethod extends \Exception
+class BadRequestMethodException extends \Exception
 {
 
 }
