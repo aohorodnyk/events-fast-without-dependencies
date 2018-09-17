@@ -5,7 +5,7 @@ require_once __DIR__ . '/../src/autoloader.php';
 $app = new App();
 try {
     $app->run();
-} catch (\Exceptions\BadRequestMethod $e) {
+} catch (\Exceptions\BadRequestMethodException $e) {
     header('Method Not Allowed', true, 405);
     echo $e->getMessage();
 } catch (\Exceptions\ValidationException $e) {

@@ -28,7 +28,7 @@ class App
     }
 
     /**
-     * @throws \Exceptions\BadRequestMethod
+     * @throws \Exceptions\BadRequestMethodException
      * @throws \Exceptions\ValidationException
      */
     public function run()
@@ -38,14 +38,14 @@ class App
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $this->controller->putEvent();
                 } else {
-                    throw new \Exceptions\BadRequestMethod('This path supports just POST method');
+                    throw new \Exceptions\BadRequestMethodException('This path supports just POST method');
                 }
                 break;
             case '/events':
                 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                     $this->controller->getEvent();
                 } else {
-                    throw new \Exceptions\BadRequestMethod('This path supports just GET method');
+                    throw new \Exceptions\BadRequestMethodException('This path supports just GET method');
                 }
 
         }
