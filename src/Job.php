@@ -40,7 +40,7 @@ WHERE event_date >= DATE(NOW()) - INTERVAL 7 DAY AND e.country_code IN (tc.count
 ORDER BY event_date ASC, `count` DESC, e.country_code ASC
 SQL;
         $statement = $this->conn->query($sql);
-        $result = $statement->fetchAll();
+        $result = $statement->fetchAll(PDO::FETCH_ASSOC);
 
         if ($result === false) {
             throw new \Exception();
