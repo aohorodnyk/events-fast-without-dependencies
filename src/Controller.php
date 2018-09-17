@@ -51,11 +51,11 @@ SQL;
      */
     public function getEvent()
     {
-        if (empty($_GET['type']) || !in_array($_GET['type'], ['json', 'csv'])) {
+        if (!empty($_GET['type']) && !in_array($_GET['type'], ['json', 'csv'])) {
             $result = ['status' => 'error', 'errors' => ["Parameter 'type' must contains only 'csv' or 'json'"]];
             throw new \Exceptions\ValidationException(json_encode($result));
         }
-        $type = $_GET['type'];
+        $type = !empty($_GET['type']) ? $_GET['type'] : 'json';
 
         $name = \App::CACHE_NAME;
         $sql = <<<SQL
